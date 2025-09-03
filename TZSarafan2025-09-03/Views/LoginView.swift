@@ -28,27 +28,40 @@ struct LoginView: View {
             )
             .ignoresSafeArea()
             
+            Image("wheel")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 400, height: 400)
+            
             VStack(spacing: 30) {
                 Spacer()
                 
                 // Welcome text
                 VStack(spacing: 16) {
-                    Text("WELCOME")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.primary)
+                    HStack{
+                        Text("WELCOME")
+                            .font(.system(size: 34, weight: .bold))
+                            .foregroundColor(.primary)
+                            .multilineTextAlignment(.leading)
+                        
+                        Spacer()
+                    }
                     
+                    HStack{
                     Text("Enter your phone number. We will send you an SMS with a confirmation code to this number.")
                         .font(.body)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
-                        .padding(.horizontal, 20)
+                        Spacer()
+                    }
                 }
-                
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 20)
+                                
                 Spacer()
                 
                 // Peony flower illustration placeholder
-                Image(systemName: "leaf.fill")
+                Image("flower")
                     .font(.system(size: 120))
                     .foregroundColor(.pink)
                     .padding(.bottom, 20)
@@ -66,7 +79,7 @@ struct LoginView: View {
                             viewModel.signInWithApple()
                         }
                     )
-                    .signInWithAppleButtonStyle(.black)
+                    .signInWithAppleButtonStyle(.white)
                     .frame(height: 50)
                     .cornerRadius(8)
                     
@@ -75,7 +88,7 @@ struct LoginView: View {
                         viewModel.signInWithGoogle()
                     }) {
                         HStack {
-                            Image(systemName: "globe")
+                            Image("googleIcon")
                                 .foregroundColor(.primary)
                             Text("Continue with Google")
                                 .foregroundColor(.primary)
