@@ -24,9 +24,7 @@ struct TZSarafan2025_09_03App: App {
             fatalError("GoogleService-Info.plist не найден или CLIENT_ID отсутствует")
         }
         
-        guard let config = GIDConfiguration(clientID: clientId) else {
-            fatalError("Не удалось создать GIDConfiguration")
-        }
+        let config = GIDConfiguration(clientID: clientId)
         
         GIDSignIn.sharedInstance.configuration = config
     }

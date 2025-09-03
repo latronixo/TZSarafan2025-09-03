@@ -22,3 +22,4 @@ class WelcomeViewModel: ObservableObject {
         authService.signOut()
     }
 }
+

@@ -162,3 +162,4 @@
 - Проверьте настройки в Google Cloud Console
 - Убедитесь, что Bundle ID совпадает в Firebase и Google Cloud Console
 - Проверьте URL schemes в Info.plist
+

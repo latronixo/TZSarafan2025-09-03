@@ -402,3 +402,4 @@ Text("welcome_title", bundle: .main)
 ENABLE_BITCODE = YES
 SWIFT_OPTIMIZATION_LEVEL = -O
 ```
+

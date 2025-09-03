@@ -17,9 +17,22 @@
 		CE42DA172E686ED100C3481B /* TZSarafan2025-09-03.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TZSarafan2025-09-03.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CEA0CBD12E6890A2009E7B93 /* Exceptions for "TZSarafan2025-09-03" folder in "TZSarafan2025-09-03" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CE42DA162E686ED100C3481B /* TZSarafan2025-09-03 */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CE42DA192E686ED100C3481B /* TZSarafan2025-09-03 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CEA0CBD12E6890A2009E7B93 /* Exceptions for "TZSarafan2025-09-03" folder in "TZSarafan2025-09-03" target */,
+			);
 			path = "TZSarafan2025-09-03";
 			sourceTree = "<group>";
 		};
@@ -275,6 +288,7 @@
 				DEVELOPMENT_TEAM = Z4PKJ57KTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TZSarafan2025-09-03/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -303,6 +317,7 @@
 				DEVELOPMENT_TEAM = Z4PKJ57KTJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TZSarafan2025-09-03/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

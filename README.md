@@ -184,3 +184,4 @@ TZSarafan2025-09-03/
 - iOS 18.5+
 - Xcode 16.4+
 - Swift 5.0+
+

@@ -42,3 +42,4 @@ struct JSONRPCError: Codable {
     let code: Int
     let message: String
 }
+
