@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CE42DA3D2E68729E00C3481B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE42DA3C2E68729E00C3481B /* FirebaseAnalytics */; };
+		CE42DA3F2E68729E00C3481B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CE42DA3E2E68729E00C3481B /* FirebaseAuth */; };
+		CE42DA422E68733C00C3481B /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = CE42DA412E68733C00C3481B /* GoogleSignIn */; };
+		CE42DA442E68733C00C3481B /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CE42DA432E68733C00C3481B /* GoogleSignInSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CE42DA172E686ED100C3481B /* TZSarafan2025-09-03.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TZSarafan2025-09-03.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +30,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE42DA3D2E68729E00C3481B /* FirebaseAnalytics in Frameworks */,
+				CE42DA3F2E68729E00C3481B /* FirebaseAuth in Frameworks */,
+				CE42DA422E68733C00C3481B /* GoogleSignIn in Frameworks */,
+				CE42DA442E68733C00C3481B /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +76,10 @@
 			);
 			name = "TZSarafan2025-09-03";
 			packageProductDependencies = (
+				CE42DA3C2E68729E00C3481B /* FirebaseAnalytics */,
+				CE42DA3E2E68729E00C3481B /* FirebaseAuth */,
+				CE42DA412E68733C00C3481B /* GoogleSignIn */,
+				CE42DA432E68733C00C3481B /* GoogleSignInSwift */,
 			);
 			productName = "TZSarafan2025-09-03";
 			productReference = CE42DA172E686ED100C3481B /* TZSarafan2025-09-03.app */;
@@ -94,6 +109,10 @@
 			);
 			mainGroup = CE42DA0E2E686ED100C3481B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CE42DA3B2E68729E00C3481B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CE42DA402E68733C00C3481B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CE42DA182E686ED100C3481B /* Products */;
 			projectDirPath = "";
@@ -324,6 +343,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE42DA3B2E68729E00C3481B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.2.0;
+			};
+		};
+		CE42DA402E68733C00C3481B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE42DA3C2E68729E00C3481B /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE42DA3B2E68729E00C3481B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		CE42DA3E2E68729E00C3481B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE42DA3B2E68729E00C3481B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CE42DA412E68733C00C3481B /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE42DA402E68733C00C3481B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		CE42DA432E68733C00C3481B /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE42DA402E68733C00C3481B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE42DA0F2E686ED100C3481B /* Project object */;
 }
