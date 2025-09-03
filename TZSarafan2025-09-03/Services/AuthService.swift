@@ -32,7 +32,7 @@ class AuthService: NSObject, ObservableObject {
     // MARK: - Auth State Management
     
     private func checkAuthState() {
-        if let accessToken = tokenStorage.getAccessToken() {
+        if let _ = tokenStorage.getAccessToken() {
             // TODO: Validate token with backend
             isAuthenticated = true
         }
@@ -63,7 +63,7 @@ class AuthService: NSObject, ObservableObject {
         isLoading = true
         errorMessage = nil
         
-        guard let presentingViewController = UIApplication.shared.windows.first?.rootViewController else {
+        guard let presentingViewController = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.rootViewController else {
             errorMessage = "Не удалось получить root view controller"
             isLoading = false
             return
@@ -98,7 +98,7 @@ class AuthService: NSObject, ObservableObject {
         let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: result.user.accessToken.tokenString)
         
         do {
-            let authResult = try await Auth.auth().signIn(with: credential)
+            let _ = try await Auth.auth().signIn(with: credential)
             await authenticateWithBackend(idToken: idToken)
         } catch {
             errorMessage = "Ошибка Firebase Auth: \(error.localizedDescription)"
@@ -162,7 +162,7 @@ extension AuthService: ASAuthorizationControllerDelegate {
         
         Task {
             do {
-                let authResult = try await Auth.auth().signIn(with: credential)
+                let _ = try await Auth.auth().signIn(with: credential)
                 await authenticateWithBackend(idToken: idTokenString)
             } catch {
                 await MainActor.run {
@@ -183,7 +183,10 @@ extension AuthService: ASAuthorizationControllerDelegate {
 
 extension AuthService: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return UIApplication.shared.windows.first { $0.isKeyWindow } ?? ASPresentationAnchor()
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+            return ASPresentationAnchor()
+        }
+        return windowScene.windows.first { $0.isKeyWindow } ?? ASPresentationAnchor()
     }
 }
 
