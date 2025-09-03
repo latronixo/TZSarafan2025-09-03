@@ -1,0 +1,6 @@
+.DS_Store
+*.xcuserstate
+*xcschememanagement.plist
+*.xcbkptlist
+Package.resolved
+Secrets.swift
