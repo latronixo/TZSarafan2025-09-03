@@ -8,14 +8,8 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    @StateObject private var viewModel: WelcomeViewModel
-    @StateObject private var authService: AuthService
-    
-    init() {
-        let authService = AuthService()
-        self._authService = StateObject(wrappedValue: authService)
-        self._viewModel = StateObject(wrappedValue: WelcomeViewModel(authService: authService))
-    }
+    @EnvironmentObject private var authService: AuthService
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         NavigationView {
@@ -33,7 +27,7 @@ struct WelcomeView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.primary)
                     
-                    if let user = viewModel.user {
+                    if let user = authService.currentUser {
                         Text("Привет, \(user.name)!")
                             .font(.title2)
                             .foregroundColor(.secondary)
@@ -43,7 +37,7 @@ struct WelcomeView: View {
                 Spacer()
                 
                 // User info card
-                if let user = viewModel.user {
+                if let user = authService.currentUser {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Информация о пользователе")
                             .font(.headline)
@@ -75,14 +69,14 @@ struct WelcomeView: View {
                 
                 // Sign out button
                 Button(action: {
-                    viewModel.signOut()
+                    authService.signOut()
                 }) {
                     Text("Выйти")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
-                        .background(Color.red)
+                        .background(colorScheme == .dark ? Color(red: 0.9, green: 0.25, blue: 0.2) : Color.red)
                         .cornerRadius(8)
                 }
                 .padding(.horizontal, 20)
@@ -96,5 +90,6 @@ struct WelcomeView: View {
 
 #Preview {
     WelcomeView()
+        .environmentObject(AuthService())
 }
 

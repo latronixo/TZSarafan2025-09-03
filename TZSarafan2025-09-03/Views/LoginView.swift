@@ -9,14 +9,8 @@ import SwiftUI
 import AuthenticationServices
 
 struct LoginView: View {
-    @StateObject private var viewModel: LoginViewModel
-    @StateObject private var authService: AuthService
-    
-    init() {
-        let authService = AuthService()
-        self._authService = StateObject(wrappedValue: authService)
-        self._viewModel = StateObject(wrappedValue: LoginViewModel(authService: authService))
-    }
+    @EnvironmentObject private var authService: AuthService
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
         ZStack {
@@ -27,16 +21,26 @@ struct LoginView: View {
                 endPoint: .bottomTrailing
             )
             .ignoresSafeArea()
+            .overlay(
+                Image("wheel")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 600, height: 600)
+                    .offset(x: 50, y: 50)
+            )
             
-            Image("wheel")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 400, height: 400)
-            
-            VStack(spacing: 30) {
+            VStack() {
+                HStack {
+                     Spacer()
+                     Button("Skip") {
+                     }
+                     .font(.body)
+                     .foregroundColor(.secondary)
+                 }
+                .padding(.horizontal, 20)
+                
                 Spacer()
                 
-                // Welcome text
                 VStack(spacing: 16) {
                     HStack{
                         Text("WELCOME")
@@ -47,56 +51,51 @@ struct LoginView: View {
                         Spacer()
                     }
                     
-                    HStack{
                     Text("Enter your phone number. We will send you an SMS with a confirmation code to this number.")
-                        .font(.body)
+                        .font(.system(size: 18, weight: .light))
                         .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
-                        Spacer()
-                    }
+                        .multilineTextAlignment(.leading)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 20)
-                                
-                Spacer()
                 
-                // Peony flower illustration placeholder
                 Image("flower")
                     .font(.system(size: 120))
                     .foregroundColor(.pink)
-                    .padding(.bottom, 20)
+                    .frame(width: 200, height: 400)
+                    .padding(.top, 50)
                 
-                Spacer()
-                
-                // Sign in buttons
                 VStack(spacing: 16) {
-                    // Apple Sign In Button
-                    SignInWithAppleButton(
-                        onRequest: { request in
-                            request.requestedScopes = [.fullName, .email]
-                        },
-                        onCompletion: { result in
-                            viewModel.signInWithApple()
-                        }
-                    )
-                    .signInWithAppleButtonStyle(.white)
-                    .frame(height: 50)
-                    .cornerRadius(8)
-                    
-                    // Google Sign In Button
                     Button(action: {
-                        viewModel.signInWithGoogle()
+                        authService.signInWithApple()
+                    }) {
+                        HStack {
+                            Image(systemName: "applelogo")
+                                .frame(width: 22, height: 22)
+                            Text("Continue with Apple")
+                                .font(.system(size: 17, weight: .medium))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(colorScheme == .dark ? Color.gray : Color.white)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .cornerRadius(8)
+                    }
+                    
+                    Button(action: {
+                        authService.signInWithGoogle()
                     }) {
                         HStack {
                             Image("googleIcon")
                                 .foregroundColor(.primary)
+                                .frame(width: 22, height: 22)
                             Text("Continue with Google")
-                                .foregroundColor(.primary)
-                                .fontWeight(.medium)
+                                .font(.system(size: 17, weight: .medium))
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
-                        .background(Color.white)
+                        .background(colorScheme == .dark ? .gray : .white)
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
@@ -114,7 +113,6 @@ struct LoginView: View {
                     
                     HStack(spacing: 4) {
                         Button("Terms of Use") {
-                            // Handle terms of use
                         }
                         .font(.caption)
                         .foregroundColor(.blue)
@@ -162,5 +160,6 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
+        .environmentObject(AuthService())
 }
 
