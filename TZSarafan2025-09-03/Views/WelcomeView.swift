@@ -16,7 +16,6 @@ struct WelcomeView: View {
             VStack(spacing: 30) {
                 Spacer()
                 
-                // Welcome message
                 VStack(spacing: 16) {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.system(size: 80))
@@ -36,7 +35,6 @@ struct WelcomeView: View {
                 
                 Spacer()
                 
-                // User info card
                 if let user = authService.currentUser {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Информация о пользователе")
@@ -67,7 +65,6 @@ struct WelcomeView: View {
                 
                 Spacer()
                 
-                // Sign out button
                 Button(action: {
                     authService.signOut()
                 }) {

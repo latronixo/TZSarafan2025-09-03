@@ -14,7 +14,6 @@ struct LoginView: View {
     
     var body: some View {
         ZStack {
-            // Background gradient
             LinearGradient(
                 gradient: Gradient(colors: [Color.blue.opacity(0.1), Color.purple.opacity(0.1)]),
                 startPoint: .topLeading,
@@ -105,7 +104,6 @@ struct LoginView: View {
                 }
                 .padding(.horizontal, 20)
                 
-                // Legal disclaimer
                 VStack(spacing: 4) {
                     Text("By continuing, you agree to Assetsy's")
                         .font(.caption)
@@ -122,7 +120,6 @@ struct LoginView: View {
                             .foregroundColor(.secondary)
                         
                         Button("Privacy Policy") {
-                            // Handle privacy policy
                         }
                         .font(.caption)
                         .foregroundColor(.blue)
@@ -132,7 +129,6 @@ struct LoginView: View {
                 .padding(.bottom, 40)
             }
             
-            // Loading overlay
             if authService.isLoading {
                 Color.black.opacity(0.3)
                     .ignoresSafeArea()
