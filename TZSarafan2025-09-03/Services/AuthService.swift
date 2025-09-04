@@ -109,6 +109,7 @@ class AuthService: NSObject, ObservableObject {
     // MARK: - Backend Authentication
     
     private func authenticateWithBackend(idToken: String) async {
+        
         do {
             let response = try await apiClient.firebaseLogin(idToken: idToken)
             tokenStorage.saveAccessToken(response.accessToken)
@@ -116,6 +117,16 @@ class AuthService: NSObject, ObservableObject {
             isAuthenticated = true
             isLoading = false
         } catch {
+            //  ЗАГЛУШКА на время, когда Back недоступен (для демонстрации)
+            // 1. Создаем фейкового пользователя
+            self.currentUser = User(id: 1, name: "John Doe (Demo)")
+            
+            // 2. Сохраняем фейковый токен
+            tokenStorage.saveAccessToken("fake-access-token-for-demo")
+            
+            // 3. Устанавливаем флаг аутентификации
+            self.isAuthenticated = true
+            
             errorMessage = "Ошибка авторизации: \(error.localizedDescription)"
             isLoading = false
         }
